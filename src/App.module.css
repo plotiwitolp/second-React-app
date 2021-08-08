@@ -15,3 +15,41 @@
     grid-template-columns: 2fr 10fr;
 }
 
+.header {
+    grid-area: header;
+    background-color: beige;
+}
+
+.logo {
+    height: 70px;
+}
+
+.sidebar {
+    grid-area: nav;
+    background-color: aquamarine;
+}
+
+.content {
+    grid-area: content;
+    background-color: aqua;
+}
+.avaAndDescription{
+    display: flex;
+    border-bottom: 1px solid #bfbfb3;
+}
+.avaWrapper{
+    width: 250px;
+    height: 230px;
+    overflow: hidden;
+}
+.avatar{
+    width: 250px;
+}
+.description{
+    padding: 15px;
+    width: 100%;
+}
+.posts{
+    padding: 15px;
+    width: 100%;
+}
