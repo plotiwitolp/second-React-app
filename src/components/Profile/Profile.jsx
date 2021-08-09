@@ -1,6 +1,7 @@
-import s from './Content.module.css';
+import s from './Profile.module.css';
 import React from 'react';
-import avatar from '../media/avatar.png';
+import avatar from '../../media/avatar.png';
+import MyPosts from './MyPosts/MyPosts';
 
 const Profile = () => {
     return (
@@ -14,18 +15,7 @@ const Profile = () => {
                     rem repellendus tempora ut voluptates? Distinctio, tenetur!
                 </div>
             </div>
-            <div className={s.posts}>
-                My posts
-                <div>
-                    New post
-                </div>
-                <div>
-                    post 1
-                </div>
-                <div>
-                    post 2
-                </div>
-            </div>
+          <MyPosts/>
         </div>
     )
 }

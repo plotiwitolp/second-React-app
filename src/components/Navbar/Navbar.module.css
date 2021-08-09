@@ -1,0 +1,12 @@
+.sidebar {
+    grid-area: nav;
+    background-color: #3c3e3d;
+    padding: 5px;
+}
+.sidebar__item{
+    padding: 5px 15px;
+}
+
+.item{
+    color: aqua;
+}

@@ -1,7 +1,7 @@
 
 .content {
     grid-area: content;
-    background-color: aqua;
+    background-color: #bdd0d0;
 }
 .avaAndDescription{
     display: flex;
@@ -16,10 +16,6 @@
     width: 250px;
 }
 .description{
-    padding: 15px;
-    width: 100%;
-}
-.posts{
     padding: 15px;
     width: 100%;
 }

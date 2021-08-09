@@ -9,9 +9,19 @@
     width: 80%;
     margin: 0 auto;
     display: grid;
-    grid-template-areas: "header header header" "nav content content";
+    grid-template-areas: "header header header"
+                        "nav content content";
     grid-gap: 5px;
-    grid-template-rows: 70px calc(100vh - 75px);
+    grid-template-rows: 70px 1fr;
     grid-template-columns: 2fr 10fr;
+    min-height: 100vh;
 }
-
+.header{
+    grid-area: header;
+}
+.navbar{
+    grid-area: nav;
+}
+.content{
+    grid-area: content;
+}
