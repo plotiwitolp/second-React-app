@@ -1,0 +1,35 @@
+.wrapper {
+    display: grid;
+    grid-template-areas: "d m";
+    min-height: calc(100vh - 75px);
+    grid-template-columns: 2fr 6fr;
+    grid-gap: 5px;
+}
+
+.Dialogs, .Message {
+    padding: 10px;
+}
+
+.Dialogs {
+    grid-area: d;
+    background-color: #234a4a;
+}
+
+.Message {
+    grid-area: m;
+    background-color: #bfbfb3;
+}
+
+.dialogItem, .messageItem {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.dialogItem {
+    background-color: #bdbdbd;
+}
+
+.messageItem {
+    background-color: #135e92;
+    color: #fff;
+}

@@ -1,6 +1,6 @@
 .sidebar {
     grid-area: nav;
-    background-color: #3c3e3d;
+    background-color: #bdbdbd;
     padding: 5px;
 }
 .sidebar__item{
@@ -8,5 +8,8 @@
 }
 
 .item{
-    color: aqua;
+    color: #234a4a;
+}
+.active{
+    color: darkred;
 }

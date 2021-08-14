@@ -5,5 +5,11 @@
 }
 .item{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 15px;
+}
+.body{
+    width: 75%;
+    margin: 10px 20px auto;
 }

@@ -5,9 +5,11 @@ const Post = (props) => {
     return (
             <div className={s.item}>
                 <img src='https://www.pinclipart.com/picdir/big/11-114024_videos-to-business-personal-information-icon-png-clipart.png' alt=''/>
-                {props.message}
+                <div className={s.body}>
+                    {props.message}
+                </div>
                 <div>
-                    <span>{props.like}</span>
+                    <span>{"like: " + props.likesCount}</span>
                 </div>
             </div>
     )
