@@ -13,3 +13,7 @@
 .active{
     color: darkred;
 }
+.sidebarFriend{
+    margin-top: 10px;
+    padding: 5px 15px;
+}

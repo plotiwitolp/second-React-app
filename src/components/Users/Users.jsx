@@ -5,7 +5,7 @@ const Users = (props) => {
 
 
 
-    const usersElements = props.users.map(el =>  <User {...el} key={el.id}/>)
+    const usersElements = props.state.users.map(el =>  <User {...el} key={el.id}/>)
 
     return (
         <div>
