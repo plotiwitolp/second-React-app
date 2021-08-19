@@ -3,6 +3,12 @@ import React from 'react';
 import Post from './Post/Post';
 
 const MyPosts = () => {
+
+    const postsData = [
+    {id: 1, message: '1 message', likesCount: 1},
+    {id: 2, message: '2 message', likesCount: 22},
+    ]
+
     return (
         <div className={s.posts}>
             My posts
@@ -10,12 +16,8 @@ const MyPosts = () => {
                 <textarea></textarea>
                 <button>Add post</button>
             </div>
-            <Post
-                message='First message'
-                likesCount='1'/>
-            <Post
-                message='Second message'
-                likesCount='22'/>
+            <Post {...postsData[0]}/>
+            <Post {...postsData[1]}/>
         </div>
     )
 }
