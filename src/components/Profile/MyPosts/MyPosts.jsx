@@ -2,12 +2,12 @@ import s from './MyPosts.module.css';
 import React from 'react';
 import Post from './Post/Post';
 
-const MyPosts = () => {
+const MyPosts = (props) => {
 
-    const postsData = [
-    {id: 1, message: '1 message', likesCount: 1},
-    {id: 2, message: '2 message', likesCount: 22},
-    ]
+
+
+    const postsElements =  props.posts.map(el => <Post {...el} key={el.id}/>)
+
 
     return (
         <div className={s.posts}>
@@ -16,8 +16,7 @@ const MyPosts = () => {
                 <textarea></textarea>
                 <button>Add post</button>
             </div>
-            <Post {...postsData[0]}/>
-            <Post {...postsData[1]}/>
+            {postsElements}
         </div>
     )
 }

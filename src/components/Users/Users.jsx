@@ -1,10 +1,15 @@
 import React from 'react';
-import s from './Users.module.css'
+import User from './User';
 
-const Users = () => {
+const Users = (props) => {
+
+
+
+    const usersElements = props.users.map(el =>  <User {...el} key={el.id}/>)
+
     return (
         <div>
-            Users
+            {usersElements}
         </div>
     );
 };
