@@ -1,3 +1,8 @@
+let rerender = () => {
+    console.log('state changed')
+}
+
+
 const state = {
     dialogsData: {
         dialogs: [
@@ -8,7 +13,7 @@ const state = {
             {id: 1, body: "Message 1",},
             {id: 2, body: "Message 2",},
         ],
-        myText: "this is my text",
+        myText: "",
     },
     profileData: {
         posts: [
@@ -21,6 +26,7 @@ const state = {
                 img: 'https://www.pinclipart.com/picdir/big/11-114024_videos-to-business-personal-information-icon-png-clipart.png',
             },
         ],
+        postText: ''
     },
     usersData: {
         users: [
@@ -37,8 +43,44 @@ const state = {
     sidebarData: {
         sidebar: [
             {id: 1, friend: "friend 1"},
-            {id: 1, friend: "friend 2"}
+            {id: 2, friend: "friend 2"}
         ]
     }
 }
+
+window.state = state
+
+export const addPost = () => {
+    const newPost = {
+        id: 3, post: state.profileData.postText, likesCount: 222,
+        img: 'https://www.pinclipart.com/picdir/big/11-114024_videos-to-business-personal-information-icon-png-clipart.png',
+    }
+    state.profileData.posts.push(newPost)
+    updatePostText('')
+    rerender(state)
+}
+
+export const addMessage = () => {
+    const newMessage = {
+        id: 1, body: state.dialogsData.myText,
+    }
+    state.dialogsData.messages.push(newMessage)
+    updateMyText('')
+    rerender(state)
+}
+
+export const updatePostText = (text) =>{
+    state.profileData.postText = text
+    rerender(state)
+}
+
+export const updateMyText = (text) =>{
+    state.dialogsData.myText = text
+    rerender(state)
+}
+
+export const subscribe = (observer) => {
+    rerender = observer
+}
+
 export default state
