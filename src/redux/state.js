@@ -69,12 +69,12 @@ export const addMessage = () => {
     rerender(state)
 }
 
-export const updatePostText = (text) =>{
+export const updatePostText = (text) => {
     state.profileData.postText = text
     rerender(state)
 }
 
-export const updateMyText = (text) =>{
+export const updateMyText = (text) => {
     state.dialogsData.myText = text
     rerender(state)
 }

@@ -6,7 +6,7 @@ import {BrowserRouter} from 'react-router-dom';
 import App from './App';
 import React from 'react';
 
- const rerender = (state) => {
+const rerender = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={state}
