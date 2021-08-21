@@ -1,6 +1,5 @@
 import './index.css';
-import state, {subscribe} from './redux/state'
-import {addMessage, addPost, updateMyText, updatePostText} from './redux/state';
+import store from './redux/state'
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import App from './App';
@@ -10,13 +9,13 @@ const rerender = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={state}
-                 addPost={addPost}
-                 addMessage={addMessage}
-                 updatePostText={updatePostText}
-                 updateMyText={updateMyText}/>
+                 addPost={store.addPost.bind(store)}
+                 addMessage={store.addMessage.bind(store)}
+                 updatePostText={store.updatePostText.bind(store)}
+                 updateMyText={store.updateMyText.bind(store)}/>
         </BrowserRouter>, document.getElementById('root'));
 }
-rerender(state)
+    rerender(store.getState())
 
-subscribe(rerender)
+store.subscribe(rerender)
 
