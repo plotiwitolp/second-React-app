@@ -1,0 +1,66 @@
+.Dialogs {
+    display: grid;
+    grid-template-areas: "d m ";
+    grid-template-columns: 1fr 6fr;
+    grid-gap: 5px;
+}
+.DialogsWrapper{
+    display: grid;
+}
+.Dialogs, .Messages {
+    /*padding: 10px;*/
+}
+
+.Dialogs {
+    background-color: #234a4a;
+    position: relative;
+}
+.DialogsNavLink{
+    padding: 10px;
+    margin: 2px;
+    background-color: #468c8c;
+    border-radius: 5px;
+}
+.DialogsNavLink:link, .DialogsNavLink:visited{
+    color: white;
+}
+
+.Messages {
+    background-color: #bdbdbd;
+    position: absolute;
+    left: 15.8%;
+    top: 20px;
+    width: 55%;
+    border-radius: 0 7px 7px;
+    z-index: 999;
+}
+.MessagesBlock:before{
+    content: '';
+    border-top: 10px solid rgba(189, 189, 189, 0);
+    border-right: 10px solid rgba(189, 189, 189, 0);
+    border-bottom: 10px solid rgb(189 189 189);
+    border-left: 10px solid rgb(189, 189, 189);
+    position: absolute;
+    transform: rotate(
+            180deg
+    );
+    left: -20px;
+    top: 0px;
+}
+.MessagesBlock{
+    padding: 10px;
+}
+
+.dialogItem, .messageItem {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.dialogItem {
+    background-color: #bdbdbd;
+}
+
+.messageItem {
+    background-color: #135e92;
+    color: #fff;
+}

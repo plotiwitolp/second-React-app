@@ -1,35 +1,37 @@
-import s from './Dialogs.module.css';
 import React from 'react';
-import Dialog from './Dialog/Dialog';
-import Message from './Message/Message';
+import {NavLink, Route} from 'react-router-dom';
+import s from './DialogsWrapper.module.css'
 
 const Dialogs = (props) => {
 
-
-
-
-    const dialogsElements = props.state.dialogs.map(el => <Dialog {...el} key={el.id}/>)
-    const messagesElements = props.state.messages.map(el => <Message {...el} key={el.id}/>)
-
-    const myText = React.createRef()
-
-    const sendMyText = () => {
-        props.addMessage()
+    const Messages = props.messages.map(el => <div key={el.id}>
+        <div>{el.body}</div>
+    </div>)
+    const newMessageElement = React.createRef()
+    let dialogId = props.id
+    const addMessage = () => {
+        props.addMessage(dialogId)
     }
-    const updateMyText = () =>{
-        let newMyText = myText.current.value
-        props.updateMyText(newMyText)
+    const updateMyText = () => {
+        let text = newMessageElement.current.value
+        props.updateMyText(dialogId, text)
     }
-
     return (
-        <div className={s.wrapper}>
-            <div className={s.Dialogs}>
-                {dialogsElements}
+        <div className={s.Dialogs}>
+            <NavLink to={`/dialogs/${props.id}`} className={s.DialogsNavLink}>
+            <div >
+                {props.body}
             </div>
-            <div className={s.Message}>
-                {messagesElements}
-                <textarea ref={myText} onChange={updateMyText} value={props.state.myText}/>
-                <button onClick={sendMyText}>send</button>
+            </NavLink>
+            <div className={s.Messages}>
+                <Route path={`/dialogs/${props.id}`} render={() => {
+                    return (
+                        <div className={s.MessagesBlock}>{Messages}
+                            <textarea ref={newMessageElement} onChange={updateMyText} value={props.myText}/>
+                            <button onClick={addMessage}>Send</button>
+                        </div>
+                    )
+                }}/>
             </div>
         </div>
     )

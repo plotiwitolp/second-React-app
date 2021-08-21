@@ -23,5 +23,8 @@
     grid-area: nav;
 }
 .content{
-    grid-area: content;
+    background-color: #234a4a;
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
 }

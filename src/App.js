@@ -1,9 +1,9 @@
 import s from './App.module.css';
 import React from 'react';
 import Header from './components/Header/Header';
-import Navbar from './components/Navbar/Navbar';
+import NavBar from './components/NavBar/NavBar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
+import DialogsWrapper from './components/Dialogs/DialogsWrapper';
 import {Route} from 'react-router-dom';
 import Users from './components/Users/Users';
 import News from './components/News/News';
@@ -17,11 +17,11 @@ const App = (props) => {
     return (
             <div className={s.appWrapper}>
                 <Header className={s.header}/>
-                <Navbar className={s.navbar} state={props.state.sidebarData}/>
+                <NavBar state={props.state.sidebarData}/>
                 <div className={s.content}>
                     <Route exact path={'/'} render={ProfilePage}/>
 
-                    <Route path={'/dialogs'} render={() => <Dialogs state={props.state.dialogsData}
+                    <Route path={'/dialogs'} render={() => <DialogsWrapper state={props.state.dialogsData}
                                                                     addMessage={props.addMessage}
                                                                     updateMyText={props.updateMyText}/>}/>
                     <Route path={'/profile'} render={ProfilePage}/>

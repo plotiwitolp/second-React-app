@@ -2,18 +2,42 @@ let rerender = () => {
     console.log('state changed')
 }
 
-
 const state = {
     dialogsData: {
         dialogs: [
-            {id: 1, body: "Dialog 1",},
-            {id: 2, body: "Dialog 2",},
-        ],
-        messages: [
-            {id: 1, body: "Message 1",},
-            {id: 2, body: "Message 2",},
-        ],
-        myText: "",
+            {
+                id: 1, body: "Dialog 1",
+                messages: [
+                    {id: 1, body: "Dialog 1 Messages 1",},
+                    {id: 2, body: "Dialog 1 Messages 2",},
+                ],
+                myText: "",
+            },
+            {
+                id: 2, body: "Dialog 2",
+                messages: [
+                    {id: 1, body: "Dialog 2 Messages 1",},
+                    {id: 2, body: "Dialog 2 Messages 2",},
+                ],
+                myText: "",
+            },
+            {
+                id: 3, body: "Dialog 3",
+                messages: [
+                    {id: 1, body: "Dialog 3 Messages 1",},
+                    {id: 2, body: "Dialog 3 Messages 2",},
+                ],
+                myText: "",
+            },
+            {
+                id: 4, body: "Dialog 4",
+                messages: [
+                    {id: 1, body: "Dialog 4 Messages 1",},
+                    {id: 2, body: "Dialog 4 Messages 2",},
+                ],
+                myText: "",
+            },
+        ]
     },
     profileData: {
         posts: [
@@ -47,9 +71,7 @@ const state = {
         ]
     }
 }
-
 window.state = state
-
 export const addPost = () => {
     const newPost = {
         id: 3, post: state.profileData.postText, likesCount: 222,
@@ -60,12 +82,13 @@ export const addPost = () => {
     rerender(state)
 }
 
-export const addMessage = () => {
+export const addMessage = (id) => {
+
     const newMessage = {
-        id: 1, body: state.dialogsData.myText,
+        id: id, body: state.dialogsData.dialogs[id - 1].myText,
     }
-    state.dialogsData.messages.push(newMessage)
-    updateMyText('')
+    state.dialogsData.dialogs[id - 1].messages.push(newMessage)
+    updateMyText(id, '')
     rerender(state)
 }
 
@@ -74,8 +97,8 @@ export const updatePostText = (text) => {
     rerender(state)
 }
 
-export const updateMyText = (text) => {
-    state.dialogsData.myText = text
+export const updateMyText = (id, msg) => {
+    state.dialogsData.dialogs[id - 1].myText = msg
     rerender(state)
 }
 
