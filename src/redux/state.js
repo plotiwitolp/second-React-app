@@ -75,8 +75,6 @@ const store = {
     subscribe(observer) {
         this._callSubscriber = observer
     },
-
-
     addPost(){
         const newPost = {
             id: 3, post: this._state.profileData.postText, likesCount: 222,
@@ -103,7 +101,6 @@ const store = {
         this._state.dialogsData.dialogs[id - 1].myText = msg
         this._callSubscriber(this._state)
     },
-
     dispatch(action ){
 
     }

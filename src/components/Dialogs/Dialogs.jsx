@@ -4,9 +4,7 @@ import s from './DialogsWrapper.module.css'
 
 const Dialogs = (props) => {
 
-    const Messages = props.messages.map(el => <div key={el.id}>
-        <div>{el.body}</div>
-    </div>)
+    const Messages = props.messages.map(el => <div key={el.id}><div>{el.body}</div></div>)
     const newMessageElement = React.createRef()
     let dialogId = props.id
     const addMessage = () => {
@@ -16,17 +14,19 @@ const Dialogs = (props) => {
         let text = newMessageElement.current.value
         props.updateMyText(dialogId, text)
     }
+
     return (
         <div className={s.Dialogs}>
             <NavLink to={`/dialogs/${props.id}`} className={s.DialogsNavLink}>
-            <div >
+            <div>
                 {props.body}
             </div>
             </NavLink>
             <div className={s.Messages}>
                 <Route path={`/dialogs/${props.id}`} render={() => {
                     return (
-                        <div className={s.MessagesBlock}>{Messages}
+                        <div className={s.MessagesBlock}>
+                            {Messages}
                             <textarea ref={newMessageElement} onChange={updateMyText} value={props.myText}/>
                             <button onClick={addMessage}>Send</button>
                         </div>
