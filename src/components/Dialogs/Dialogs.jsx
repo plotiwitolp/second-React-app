@@ -4,15 +4,16 @@ import s from './DialogsWrapper.module.css'
 
 const Dialogs = (props) => {
 
+    console.log(props)
     const Messages = props.messages.map(el => <div key={el.id}><div>{el.body}</div></div>)
     const newMessageElement = React.createRef()
     let dialogId = props.id
     const addMessage = () => {
-        props.addMessage(dialogId)
+        props.dispatch({type: "ADD_MESSAGE", dialogId})
     }
     const updateMyText = () => {
         let text = newMessageElement.current.value
-        props.updateMyText(dialogId, text)
+        props.dispatch({type: "UPDATE_MY_TEXT",dialogId, text})
     }
 
     return (

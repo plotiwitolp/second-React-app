@@ -5,8 +5,7 @@ const DialogsWrapper = (props) => {
 
     const DialogsElements = props.state.dialogs.map(el => <Dialogs {...el}
                                                                    key={el.id}
-                                                                   addMessage={props.addMessage}
-                                                                   updateMyText={props.updateMyText}/>)
+                                                                   dispatch={props.dispatch}/>)
 
     return (
         <div>

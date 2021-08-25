@@ -11,24 +11,22 @@ import News from './components/News/News';
 const App = (props) => {
 
     const ProfilePage = () => (<Profile state={props.state.profileData}
-                                        addPost={props.addPost}
-                                        updatePostText={props.updatePostText}/>)
+                                        dispatch={props.dispatch}/>)
 
     return (
-            <div className={s.appWrapper}>
-                <Header className={s.header}/>
-                <NavBar state={props.state.sidebarData}/>
-                <div className={s.content}>
-                    <Route exact path={'/'} render={ProfilePage}/>
+        <div className={s.appWrapper}>
+            <Header className={s.header}/>
+            <NavBar state={props.state.sidebarData}/>
+            <div className={s.content}>
+                <Route exact path={'/'} render={ProfilePage}/>
 
-                    <Route path={'/dialogs'} render={() => <DialogsWrapper state={props.state.dialogsData}
-                                                                    addMessage={props.addMessage}
-                                                                    updateMyText={props.updateMyText}/>}/>
-                    <Route path={'/profile'} render={ProfilePage}/>
-                    <Route path={'/users'} render={() => <Users state={props.state.usersData}/>}/>
-                    <Route path={'/news'} render={() => <News state={props.state.newsData}/>}/>
-                </div>
+                <Route path={'/dialogs'} render={() => <DialogsWrapper state={props.state.dialogsData}
+                                                                       dispatch={props.dispatch}/>}/>
+                <Route path={'/profile'} render={ProfilePage}/>
+                <Route path={'/users'} render={() => <Users state={props.state.usersData}/>}/>
+                <Route path={'/news'} render={() => <News state={props.state.newsData}/>}/>
             </div>
+        </div>
     );
 }
 export default App;

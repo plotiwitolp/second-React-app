@@ -68,40 +68,39 @@ const store = {
             ]
         }
     },
-    getState(){
+    getState() {
         return this._state
     },
-    _callSubscriber(){console.log('state changed')},
+    _callSubscriber() {
+        console.log('state changed')
+    },
     subscribe(observer) {
         this._callSubscriber = observer
     },
-    addPost(){
-        const newPost = {
-            id: 3, post: this._state.profileData.postText, likesCount: 222,
-            img: 'https://www.pinclipart.com/picdir/big/11-114024_videos-to-business-personal-information-icon-png-clipart.png',
+    dispatch(action) {
+        if (action.type === "ADD_POST") {
+            const newPost = {
+                id: 3, post: this._state.profileData.postText, likesCount: 222,
+                img: 'https://www.pinclipart.com/picdir/big/11-114024_videos-to-business-personal-information-icon-png-clipart.png',
+            }
+            this._state.profileData.posts.push(newPost)
+            this._state.profileData.postText = ''
+            this._callSubscriber(this._state)
+        } else if (action.type === "UPDATE_POST_TEXT") {
+            this._state.profileData.postText = action.text
+            this._callSubscriber(this._state)
+        } else if (action.type === "ADD_MESSAGE") {
+            const newMessage = {
+                id: action.dialogId,
+                body: this._state.dialogsData.dialogs[action.dialogId - 1].myText,
+            }
+            this._state.dialogsData.dialogs[action.dialogId - 1].messages.push(newMessage);
+            this._state.dialogsData.dialogs[action.dialogId - 1 ].myText = '';
+            this._callSubscriber(this._state)
+        } else if (action.type === "UPDATE_MY_TEXT") {
+            this._state.dialogsData.dialogs[action.dialogId - 1].myText = action.text
+            this._callSubscriber(this._state)
         }
-        this._state.profileData.posts.push(newPost)
-        this.updatePostText('')
-        this._callSubscriber(this._state)
-    },
-    addMessage(id){
-        const newMessage = {
-            id: id, body: this._state.dialogsData.dialogs[id - 1].myText,
-        }
-        this._state.dialogsData.dialogs[id - 1].messages.push(newMessage)
-        this.updateMyText(id, '')
-        this._callSubscriber(this._state)
-    },
-    updatePostText(text){
-
-        this._state.profileData.postText = text
-        this._callSubscriber(this._state)
-    },
-    updateMyText(id, msg){
-        this._state.dialogsData.dialogs[id - 1].myText = msg
-        this._callSubscriber(this._state)
-    },
-    dispatch(action ){
 
     }
 }
