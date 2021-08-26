@@ -2,7 +2,21 @@ const ADD_POST = 'ADD_POST'
 const UPDATE_POST_TEXT = 'UPDATE_POST_TEXT'
 const ADD_LIKES = 'ADD_LIKES'
 
-const profileReducer = (state, action) => {
+const initialState = {
+        posts: [
+            {
+                id: 1, post: '1 post', likesCount: 1,
+                img: 'https://www.pinclipart.com/picdir/big/11-114024_videos-to-business-personal-information-icon-png-clipart.png',
+            },
+            {
+                id: 2, post: '2 post', likesCount: 22,
+                img: 'https://www.pinclipart.com/picdir/big/11-114024_videos-to-business-personal-information-icon-png-clipart.png',
+            },
+        ],
+        postText: ''
+}
+
+const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_POST:

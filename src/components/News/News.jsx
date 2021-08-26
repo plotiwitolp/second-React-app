@@ -1,11 +1,8 @@
 import React from 'react';
 import {addNewsTextAC, updateNewsTextAC} from '../../redux/news-reducer';
 
-
 const News = (props) => {
-
     const newsElements = props.state.news.map(n => <div key={n.id}>{n.news}</div>)
-
     const onNewsText = (event) => {
         let text = event.target.value
         props.dispatch(updateNewsTextAC(text))
@@ -13,7 +10,6 @@ const News = (props) => {
     const addNews = () => {
         props.dispatch(addNewsTextAC())
     }
-
     return (
         <div>
             <div>{newsElements}</div>
@@ -23,6 +19,5 @@ const News = (props) => {
             </div>
         </div>
     );
-};
-
+}
 export default News;

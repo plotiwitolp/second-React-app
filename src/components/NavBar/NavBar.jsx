@@ -3,9 +3,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 
 const NavBar = (props) => {
-
     const sidebarElements = props.state.sidebar.map(el => <div className={s.sidebarFriend} key={el.id}>{el.friend}</div>)
-
     return (
         <nav className={s.sidebar}>
             <div className={s.sidebar__item}>
@@ -24,5 +22,4 @@ const NavBar = (props) => {
         </nav>
     )
 }
-
 export default NavBar

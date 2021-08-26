@@ -3,15 +3,12 @@ import {NavLink, Route} from 'react-router-dom';
 import s from './DialogsWrapper.module.css'
 import {addMessageAC, updateMyTextAC} from '../../redux/dialogs-reducer';
 
-
-
 const Dialogs = (props) => {
     const Messages = props.messages.map(el => {
        return <div key={el.id}>
             <div>{el.body}</div>
         </div>
     })
-
     let dialogId = props.id
     const addMessage = () => {
         props.dispatch(addMessageAC(dialogId))

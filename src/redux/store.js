@@ -4,7 +4,6 @@ import usersReducer from './users-reducer';
 import newsReducer from './news-reducer';
 import sidebarReducer from './sidebar-reducer';
 
-
 const store = {
     _state: {
         dialogsData: {
@@ -82,16 +81,13 @@ const store = {
         this._callSubscriber = observer
     },
     dispatch(action) {
-
         this._state.dialogsData = dialogsReducer(this._state.dialogsData, action)
         this._state.profileData = profileReducer(this._state.profileData, action)
         this._state.usersData = usersReducer(this._state.usersData, action)
         this._state.newsData = newsReducer(this._state.newsData, action)
         this._state.sidebarData = sidebarReducer(this._state.sidebarData, action)
-
         this._callSubscriber(this._state)
     }
 }
-
 window.store = store
 export default store

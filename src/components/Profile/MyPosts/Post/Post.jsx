@@ -2,16 +2,13 @@ import s from './Post.module.css';
 import React from 'react';
 import {addLikestAC} from '../../../../redux/profile-reducer';
 
-
 const Post = (props) => {
     const currentLikesPost = React.createRef()
-
     const addLikes = () => {
         let id = currentLikesPost.current.id
         props.dispatch(addLikestAC(id))
 
     }
-
     return (
             <div className={s.item}>
                 <img src={props.img}  alt=''/>
@@ -24,5 +21,4 @@ const Post = (props) => {
             </div>
     )
 }
-
 export default Post

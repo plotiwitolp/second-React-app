@@ -3,23 +3,15 @@ import React from 'react';
 import Post from './Post/Post';
 import {addPostAC, updatePostTextAC} from '../../../redux/profile-reducer';
 
-
-
 const MyPosts = (props) => {
-
     const postsElements = props.state.posts.map(el => <Post {...el} key={el.id} dispatch={props.dispatch}/>).reverse()
-
     const addPost = () => {
         props.dispatch(addPostAC())
     }
-
     const updatePostText = (event) =>{
         let text = event.target.value
         props.dispatch(updatePostTextAC(text))
     }
-
-
-
     return (
         <div className={s.posts}>
             My posts
@@ -31,5 +23,4 @@ const MyPosts = (props) => {
         </div>
     )
 }
-
 export default MyPosts

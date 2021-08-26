@@ -3,7 +3,6 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo';
 
 const Profile = (props) => {
-
     return (
         <div>
             <ProfileInfo/>
@@ -12,5 +11,4 @@ const Profile = (props) => {
         </div>
     )
 }
-
 export default Profile

@@ -9,10 +9,8 @@ import Users from './components/Users/Users';
 import News from './components/News/News';
 
 const App = (props) => {
-
     const ProfilePage = () => (<Profile state={props.state.profileData}
                                         dispatch={props.dispatch}/>)
-
     return (
         <div className={s.appWrapper}>
             <Header className={s.header}/>

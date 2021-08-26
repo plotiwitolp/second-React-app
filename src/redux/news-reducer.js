@@ -1,7 +1,15 @@
 const UPDATE_NEWS_TEXT = 'UPDATE_NEWS_TEXT'
 const ADD_NEWS = 'ADD_NEWS'
 
- const newsReducer = (state, action) => {
+const initialState = {
+        news: [
+            {id: 1, news: "the first news"},
+            {id: 2, news: "the second news"},
+        ],
+        newsText: ''
+}
+
+ const newsReducer = (state = initialState, action) => {
      switch (action.type) {
          case UPDATE_NEWS_TEXT:
              state.newsText = action.text
