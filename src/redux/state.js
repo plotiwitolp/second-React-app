@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD_POST'
+const UPDATE_POST_TEXT = 'UPDATE_POST_TEXT'
+const ADD_MESSAGE = 'ADD_MESSAGE'
+const UPDATE_MY_TEXT = 'UPDATE_MY_TEXT'
+
 const store = {
     _state: {
         dialogsData: {
@@ -78,7 +83,7 @@ const store = {
         this._callSubscriber = observer
     },
     dispatch(action) {
-        if (action.type === "ADD_POST") {
+        if (action.type === ADD_POST) {
             const newPost = {
                 id: 3, post: this._state.profileData.postText, likesCount: 222,
                 img: 'https://www.pinclipart.com/picdir/big/11-114024_videos-to-business-personal-information-icon-png-clipart.png',
@@ -86,10 +91,10 @@ const store = {
             this._state.profileData.posts.push(newPost)
             this._state.profileData.postText = ''
             this._callSubscriber(this._state)
-        } else if (action.type === "UPDATE_POST_TEXT") {
+        } else if (action.type === UPDATE_POST_TEXT) {
             this._state.profileData.postText = action.text
             this._callSubscriber(this._state)
-        } else if (action.type === "ADD_MESSAGE") {
+        } else if (action.type === ADD_MESSAGE) {
             const newMessage = {
                 id: action.dialogId,
                 body: this._state.dialogsData.dialogs[action.dialogId - 1].myText,
@@ -97,12 +102,19 @@ const store = {
             this._state.dialogsData.dialogs[action.dialogId - 1].messages.push(newMessage);
             this._state.dialogsData.dialogs[action.dialogId - 1 ].myText = '';
             this._callSubscriber(this._state)
-        } else if (action.type === "UPDATE_MY_TEXT") {
+        } else if (action.type === UPDATE_MY_TEXT) {
             this._state.dialogsData.dialogs[action.dialogId - 1].myText = action.text
             this._callSubscriber(this._state)
         }
 
     }
 }
+
+export const addPostAC = () => ({type: ADD_POST})
+export const updatePostTextAC = (text) => ({type: UPDATE_POST_TEXT, text: text})
+export const addMessageAC = (dialogId) => ({type: ADD_MESSAGE, dialogId})
+export const updateMyTextAC = (dialogId, text) => ({type: UPDATE_MY_TEXT,dialogId, text})
+
+
 window.store = store
 export default store
