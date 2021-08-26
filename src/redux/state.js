@@ -1,7 +1,9 @@
-const ADD_POST = 'ADD_POST'
-const UPDATE_POST_TEXT = 'UPDATE_POST_TEXT'
-const ADD_MESSAGE = 'ADD_MESSAGE'
-const UPDATE_MY_TEXT = 'UPDATE_MY_TEXT'
+import profileReducer from './profile-reducer';
+import dialogsReducer from './dialogs-reducer';
+import usersReducer from './users-reducer';
+import newsReducer from './news-reducer';
+import sidebarReducer from './sidebar-reducer';
+
 
 const store = {
     _state: {
@@ -11,7 +13,6 @@ const store = {
                     id: 1, body: "Dialog 1",
                     messages: [
                         {id: 1, body: "Dialog 1 Messages 1",},
-                        {id: 2, body: "Dialog 1 Messages 2",},
                     ],
                     myText: "",
                 },
@@ -19,7 +20,6 @@ const store = {
                     id: 2, body: "Dialog 2",
                     messages: [
                         {id: 1, body: "Dialog 2 Messages 1",},
-                        {id: 2, body: "Dialog 2 Messages 2",},
                     ],
                     myText: "",
                 },
@@ -27,7 +27,6 @@ const store = {
                     id: 3, body: "Dialog 3",
                     messages: [
                         {id: 1, body: "Dialog 3 Messages 1",},
-                        {id: 2, body: "Dialog 3 Messages 2",},
                     ],
                     myText: "",
                 },
@@ -35,7 +34,6 @@ const store = {
                     id: 4, body: "Dialog 4",
                     messages: [
                         {id: 1, body: "Dialog 4 Messages 1",},
-                        {id: 2, body: "Dialog 4 Messages 2",},
                     ],
                     myText: "",
                 },
@@ -64,7 +62,8 @@ const store = {
             news: [
                 {id: 1, news: "the first news"},
                 {id: 2, news: "the second news"},
-            ]
+            ],
+            newsText: ''
         },
         sidebarData: {
             sidebar: [
@@ -83,38 +82,16 @@ const store = {
         this._callSubscriber = observer
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            const newPost = {
-                id: 3, post: this._state.profileData.postText, likesCount: 222,
-                img: 'https://www.pinclipart.com/picdir/big/11-114024_videos-to-business-personal-information-icon-png-clipart.png',
-            }
-            this._state.profileData.posts.push(newPost)
-            this._state.profileData.postText = ''
-            this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_POST_TEXT) {
-            this._state.profileData.postText = action.text
-            this._callSubscriber(this._state)
-        } else if (action.type === ADD_MESSAGE) {
-            const newMessage = {
-                id: action.dialogId,
-                body: this._state.dialogsData.dialogs[action.dialogId - 1].myText,
-            }
-            this._state.dialogsData.dialogs[action.dialogId - 1].messages.push(newMessage);
-            this._state.dialogsData.dialogs[action.dialogId - 1 ].myText = '';
-            this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_MY_TEXT) {
-            this._state.dialogsData.dialogs[action.dialogId - 1].myText = action.text
-            this._callSubscriber(this._state)
-        }
 
+        this._state.dialogsData = dialogsReducer(this._state.dialogsData, action)
+        this._state.profileData = profileReducer(this._state.profileData, action)
+        this._state.usersData = usersReducer(this._state.usersData, action)
+        this._state.newsData = newsReducer(this._state.newsData, action)
+        this._state.sidebarData = sidebarReducer(this._state.sidebarData, action)
+
+        this._callSubscriber(this._state)
     }
 }
-
-export const addPostAC = () => ({type: ADD_POST})
-export const updatePostTextAC = (text) => ({type: UPDATE_POST_TEXT, text: text})
-export const addMessageAC = (dialogId) => ({type: ADD_MESSAGE, dialogId})
-export const updateMyTextAC = (dialogId, text) => ({type: UPDATE_MY_TEXT,dialogId, text})
-
 
 window.store = store
 export default store
