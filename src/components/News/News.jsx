@@ -1,7 +1,7 @@
 import React from 'react';
 
 const News = (props) => {
-    const newsElements = props.state.news.map(n => <div key={n.id}>{n.news}</div>)
+    const newsElements = props.newsData.news.map(n => <div key={n.id}>{n.news}</div>)
     const onNewsText = (event) => {
         let text = event.target.value
         props.onNewsText(text)
@@ -13,7 +13,7 @@ const News = (props) => {
         <div>
             <div>{newsElements}</div>
             <div>
-                <textarea onChange={onNewsText} value={props.state.newsText} placeholder={'Enter your news'}/>
+                <textarea onChange={onNewsText} value={props.newsData.newsText} placeholder={'Enter your news'}/>
                 <button onClick={addNews}>add news</button>
             </div>
         </div>

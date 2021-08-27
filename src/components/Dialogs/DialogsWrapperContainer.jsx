@@ -1,28 +1,18 @@
 import React from 'react';
 import DialogsWrapper from './DialogsWrapper';
+import {connect} from 'react-redux';
 import {addMessageAC, updateMyTextAC} from '../../redux/dialogs-reducer';
-import StoreContext from '../../StoreContext';
 
-const DialogsWrapperContainer = (props) => {
-
-    return (
-        <StoreContext.Consumer>
-            {(store => {
-            const state = store.getState()
-
-            const addMessage = (dialogId) => {
-                store.dispatch(addMessageAC(dialogId))
-            }
-            const updateMyText = (dialogId, text) => {
-                store.dispatch(updateMyTextAC(dialogId, text))
-            }
-            return (
-                <DialogsWrapper state={state}
-                                addMessage={addMessage}
-                                updateMyText={updateMyText}/>
-            )
-        })}
-        </StoreContext.Consumer>
-    )
+const mapStateToProps = (state) => {
+    return {
+        dialogsData: state.dialogsData
+    }
 }
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        addMessage: (dialogId) => {dispatch(addMessageAC(dialogId))},
+        updateMyText: (dialogId, text) => {dispatch(updateMyTextAC(dialogId, text))}
+    }
+}
+const DialogsWrapperContainer = connect(mapStateToProps, mapDispatchToProps)(DialogsWrapper)
 export default DialogsWrapperContainer

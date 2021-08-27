@@ -3,7 +3,7 @@ import React from 'react';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-    const postsElements = props.state.posts.map(el => <Post {...el} key={el.id}
+    const postsElements = props.profileData.posts.map(el => <Post {...el} key={el.id}
                                                             addLikes={props.addLikes}/>).reverse()
     const addPost = () => {
         props.addPost()
@@ -16,7 +16,7 @@ const MyPosts = (props) => {
         <div className={s.posts}>
             My posts
             <div>
-                <textarea onChange={updatePostText} value={props.state.postText} placeholder={'Enter your text'}/>
+                <textarea onChange={updatePostText} value={props.profileData.postText} placeholder={'Enter your text'}/>
                 <button onClick={addPost}>Add post</button>
             </div>
             {postsElements}

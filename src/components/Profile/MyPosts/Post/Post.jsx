@@ -2,7 +2,6 @@ import s from './Post.module.css';
 import React from 'react';
 
 const Post = (props) => {
-    console.log(props)
     const currentLikesPost = React.createRef()
     const addLikes = () => {
         let id = currentLikesPost.current.id

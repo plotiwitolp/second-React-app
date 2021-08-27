@@ -19,20 +19,29 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             const newPost = {
                 id: state.posts.length + 1, post: state.postText, likesCount: 0,
                 img: 'https://www.pinclipart.com/picdir/big/11-114024_videos-to-business-personal-information-icon-png-clipart.png',
             }
-            state.posts.push(newPost)
-            state.postText = ''
-            return state
-        case UPDATE_POST_TEXT:
-            state.postText = action.text
-            return state
-        case ADD_LIKES:
-            state.posts[action.id - 1].likesCount++
-            return state
+            let stateCopy = {...state}
+            stateCopy.posts = [...state.posts]
+            stateCopy.posts.push(newPost)
+            stateCopy.postText = ''
+            return stateCopy
+        }
+        case UPDATE_POST_TEXT: {
+            let stateCopy = {...state}
+            stateCopy.postText = action.text
+            return stateCopy
+        }
+        case ADD_LIKES: {
+            let stateCopy = {...state}
+            stateCopy.posts = [...state.posts]
+            stateCopy.posts.likesCount = [...state.posts].likesCount
+            stateCopy.posts[action.id - 1].likesCount++
+            return stateCopy
+        }
         default:
             return state
     }
