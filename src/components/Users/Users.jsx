@@ -1,12 +1,20 @@
 import React from 'react';
 import User from './User';
+import StoreContext from '../../StoreContext';
 
 const Users = (props) => {
-    const usersElements = props.state.users.map(el =>  <User {...el} key={el.id}/>)
+
     return (
-        <div>
-            {usersElements}
-        </div>
+        <StoreContext>
+            {store=>{
+
+            const usersElements = store.getState().usersData.users.map(el =>  <User {...el} key={el.id}/>)
+            return(
+                <div>{usersElements}</div>
+            )
+        }}
+        </StoreContext>
+
     );
 }
 export default Users;
