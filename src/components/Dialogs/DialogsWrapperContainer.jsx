@@ -1,4 +1,3 @@
-import React from 'react';
 import DialogsWrapper from './DialogsWrapper';
 import {connect} from 'react-redux';
 import {addMessageAC, updateMyTextAC} from '../../redux/dialogs-reducer';
@@ -10,7 +9,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch)=>{
     return {
-        addMessage: (dialogId) => {dispatch(addMessageAC(dialogId))},
+        addMessage: (id) => {dispatch(addMessageAC(id))},
         updateMyText: (dialogId, text) => {dispatch(updateMyTextAC(dialogId, text))}
     }
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import {addNewsTextAC, updateNewsTextAC} from '../../redux/news-reducer';
 import News from './News';
 import {connect} from 'react-redux';

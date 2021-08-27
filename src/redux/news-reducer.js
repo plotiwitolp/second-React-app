@@ -19,8 +19,7 @@ const initialState = {
          case ADD_NEWS: {
              const newNews = {id: state.news.length + 1, news: state.newsText}
              let stateCopy = {...state}
-             stateCopy.news = [...state.news]
-             stateCopy.news.push(newNews)
+             stateCopy.news = [...state.news, newNews]
              stateCopy.newsText = ''
              return stateCopy
          }
