@@ -1,7 +1,6 @@
 import React from 'react';
 import {NavLink, Route} from 'react-router-dom';
-import s from './DialogsWrapper.module.css'
-import {addMessageAC, updateMyTextAC} from '../../redux/dialogs-reducer';
+import s from './Dialogs.module.css'
 
 const Dialogs = (props) => {
     const Messages = props.messages.map(el => {
@@ -11,11 +10,11 @@ const Dialogs = (props) => {
     })
     let dialogId = props.id
     const addMessage = () => {
-        props.dispatch(addMessageAC(dialogId))
+        props.addMessage(dialogId)
     }
     const updateMyText = (event) => {
         let text = event.target.value
-        props.dispatch(updateMyTextAC(dialogId, text))
+        props.updateMyText(dialogId, text)
     }
     return (
         <div className={s.Dialogs}>

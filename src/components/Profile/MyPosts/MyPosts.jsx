@@ -1,16 +1,16 @@
 import s from './MyPosts.module.css';
 import React from 'react';
 import Post from './Post/Post';
-import {addPostAC, updatePostTextAC} from '../../../redux/profile-reducer';
 
 const MyPosts = (props) => {
-    const postsElements = props.state.posts.map(el => <Post {...el} key={el.id} dispatch={props.dispatch}/>).reverse()
+    const postsElements = props.state.posts.map(el => <Post {...el} key={el.id}
+                                                            addLikes={props.addLikes}/>).reverse()
     const addPost = () => {
-        props.dispatch(addPostAC())
+        props.addPost()
     }
     const updatePostText = (event) =>{
         let text = event.target.value
-        props.dispatch(updatePostTextAC(text))
+        props.updatePostText(text)
     }
     return (
         <div className={s.posts}>

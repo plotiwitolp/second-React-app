@@ -3,14 +3,13 @@ import React from 'react';
 import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 import Profile from './components/Profile/Profile';
-import DialogsWrapper from './components/Dialogs/DialogsWrapper';
 import {Route} from 'react-router-dom';
 import Users from './components/Users/Users';
 import News from './components/News/News';
+import DialogsWrapperContainer from './components/Dialogs/DialogsWrapperContainer';
 
 const App = (props) => {
-    const ProfilePage = () => (<Profile state={props.state.profileData}
-                                        dispatch={props.dispatch}/>)
+    const ProfilePage = () => (<Profile store={props.store}/>)
     return (
         <div className={s.appWrapper}>
             <Header className={s.header}/>
@@ -18,8 +17,7 @@ const App = (props) => {
             <div className={s.content}>
                 <Route exact path={'/'} render={ProfilePage}/>
 
-                <Route path={'/dialogs'} render={() => <DialogsWrapper state={props.state.dialogsData}
-                                                                       dispatch={props.dispatch}/>}/>
+                <Route path={'/dialogs'} render={() => <DialogsWrapperContainer store={props.store}/>}/>
                 <Route path={'/profile'} render={ProfilePage}/>
                 <Route path={'/users'} render={() => <Users state={props.state.usersData}/>}/>
                 <Route path={'/news'} render={() => <News state={props.state.newsData}

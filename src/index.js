@@ -8,10 +8,11 @@ import React from 'react';
 const rerender = (state) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state} dispatch={store.dispatch.bind(store)}/>
+            <App state={state} dispatch={store.dispatch.bind(store)} store={store}/>
         </BrowserRouter>, document.getElementById('root'));
 }
 rerender(store.getState())
+
 store.subscribe(() => {
     const state = store.getState()
     rerender(state)

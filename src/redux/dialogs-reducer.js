@@ -1,8 +1,7 @@
 const ADD_MESSAGE = 'ADD_MESSAGE'
 const UPDATE_MY_TEXT = 'UPDATE_MY_TEXT'
 
-const initialState = {
-        dialogs: [
+const initialState = {dialogs: [
             {
                 id: 1, body: "Dialog 1",
                 messages: [
@@ -31,8 +30,7 @@ const initialState = {
                 ],
                 myText: "",
             },
-        ]
-}
+        ]}
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {

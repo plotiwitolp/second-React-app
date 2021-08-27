@@ -1,12 +1,12 @@
 import s from './Post.module.css';
 import React from 'react';
-import {addLikestAC} from '../../../../redux/profile-reducer';
 
 const Post = (props) => {
+    console.log(props)
     const currentLikesPost = React.createRef()
     const addLikes = () => {
         let id = currentLikesPost.current.id
-        props.dispatch(addLikestAC(id))
+        props.addLikes(id)
 
     }
     return (
