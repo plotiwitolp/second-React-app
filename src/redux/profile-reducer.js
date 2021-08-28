@@ -15,7 +15,6 @@ const initialState = {
         ],
         postText: ''
 }
-
 const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
@@ -29,26 +28,26 @@ const profileReducer = (state = initialState, action) => {
                 posts: [...state.posts, newPost],
                 postText: ''
             }
-
         case UPDATE_POST_TEXT:
             return {
                 ...state,
                 postText: action.text
             }
         case ADD_LIKES:
-            let stateCopy = {
+            return {
                 ...state,
-                posts: [...state.posts],
+                posts: state.posts.map(p => {
+                    if(p.id === +action.id){
+                        return {...p, likesCount: p.likesCount += 1}
+                    }
+                    return p
+                })
             }
-            stateCopy.posts[action.id - 1].likesCount++
-            return stateCopy
-
         default:
             return state
 
     }
 }
-
 export const addPostAC = () => ({type: ADD_POST})
 export const updatePostTextAC = (text) => ({type: UPDATE_POST_TEXT, text: text})
 export const addLikestAC = (id) => ({type: ADD_LIKES, id})
