@@ -7,6 +7,7 @@ import DialogsWrapperContainer from './components/Dialogs/DialogsWrapperContaine
 import NavBarContainer from './components/NavBar/NavBarContainer';
 import NewsContainer from './components/News/NewsContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import GamesContainer from './components/Games/GamesContainer';
 
 const App = (props) => {
     return (
@@ -20,6 +21,7 @@ const App = (props) => {
                 <Route path={'/profile'} render={() => <Profile/>}/>
                 <Route path={'/users'} render={() => <UsersContainer />}/>
                 <Route path={'/news'} render={() => <NewsContainer />}/>
+                <Route path={'/games'} render={() => <GamesContainer />}/>
             </div>
         </div>
     );

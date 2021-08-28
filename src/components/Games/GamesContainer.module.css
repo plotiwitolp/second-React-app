@@ -1,0 +1,78 @@
+*{
+    box-sizing: border-box;
+}
+
+.wrapper{
+    display: flex;
+    margin: 0 -5px;
+    height: 100%;
+}
+.list, .canvas{
+    margin: 0 5px;
+    padding: 10px;
+}
+.list{
+    width: 20%;
+    background-color: #bdbdbd;
+    margin: 0 5px;
+}
+.canvas{
+    width: 80%;
+    background-color: #1f4040;
+    display: flex;
+}
+.gamesList .linkItem{
+    display: block;
+    background-color: #468c8c;
+    margin-bottom: 5px;
+    padding: 10px;
+
+}
+.canvasContainerWrapper{
+    display: inline-grid;
+}
+
+/*.canvasWrapper{*/
+/*    width: calc(30vw + 2px);*/
+/*    margin: 0 auto;*/
+/*}*/
+.cell{
+    width: 10vw;
+    height: 10vw;
+    line-height: 7vw;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    font-size: 10vw;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.cell:first-child{
+    border-right: 10px solid #ffffff;
+}
+.cell:last-child{
+    border-left: 10px solid #ffffff;
+}
+div:first-child > .cell {
+    border-bottom: 10px solid #ffffff;
+}
+div:last-child > .cell {
+    border-top: 10px solid #ffffff;
+}
+.cellsBlock{
+    margin: -5px 0;
+}
+.button{
+    width: 100%;
+    padding: 10px;
+    height: 50px;
+}
+.display{
+    margin: 20px;
+    padding: 10px;
+}
+.display p {
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}

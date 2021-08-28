@@ -18,6 +18,9 @@ const NavBar = (props) => {
             <div className={s.sidebar__item}>
                 <NavLink className={s.item} activeClassName={s.active} to='/news'>News</NavLink>
             </div>
+            <div className={s.sidebar__item}>
+                <NavLink className={s.item} activeClassName={s.active} to='/games'>Games</NavLink>
+            </div>
             {sidebarElements}
         </nav>
     )
